@@ -12,7 +12,7 @@
 
     <link href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="static/dashboard.css" rel="stylesheet">
+    <link href="static/css/dashboard.css" rel="stylesheet">
 
   </head>
 
@@ -31,10 +31,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Help</a></li>
+            <li><a href="index.php">Dashboard</a></li>
+            <li><a href="#"><?php echo $_SESSION['user_info']['u_nick'];?></a></li>
+            <li><a href="logout.php">Logout</a></li>
           </ul>
         </div>
       </div>
