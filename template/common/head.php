@@ -43,9 +43,9 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="index.php">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="user.php">User</a></li>
-            <li><a href="#">Manager</a></li>
+            <li class="<?php echo INDEX;?>"><a href="index.php">Overview <span class="sr-only">(current)</span></a></li>
+            <li class="<?php echo USER;?>"><a href="user.php">User</a></li>
+            <li class="<?php echo MANAGER;?>"><a href="manager.php">Manager</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="">Jobs info</a></li>
