@@ -3,7 +3,7 @@
  * @Author: kidjourney
  * @Date:   2015-05-17 21:30:45
  * @Last Modified by:   kidjourney
- * @Last Modified time: 2015-05-17 23:18:07
+ * @Last Modified time: 2015-05-17 23:36:51
  */
     require_once("db_common.php");
     require_once("http_common.php");
@@ -32,6 +32,7 @@
             $res = $this->mysqliworker->query("SELECT * FROM user;");
             $result = array();
             while ($row=$res->fetch_assoc()){
+                unset($row['pwd']);
                 $result[] = $row;
             }
             return $result;
@@ -41,7 +42,7 @@
             if ($reslut = $this->mysqliworker->query("DELETE FROM user where usernameID=" . $usernameID)){
                 redirect("user.php");
             } else {
-                die("Delete failed !");
+                die("Delete failed ! " . $this->mysqliworker->error);
             }
         }
             
