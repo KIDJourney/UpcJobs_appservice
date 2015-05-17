@@ -3,7 +3,7 @@
  * @Author: kidjourney
  * @Date:   2015-05-06 11:38:55
  * @Last Modified by:   kidjourney
- * @Last Modified time: 2015-05-17 21:40:28
+ * @Last Modified time: 2015-05-17 23:27:01
  */
 require_once("http_common.php");
 require_once("db_common.php");
@@ -24,7 +24,26 @@ class index_class {
         if (isset($_SESSION['sql_cache'])){
             return ;
         } else {
-            $_SESSION['sql_cache'] = getsqlstatus();
+            $_SESSION['sql_cache'] = $this->getsqlstatus();
         }
+    }
+
+    function getsqlstatus(){
+        $worker = sqliconnect();
+        $query = "SELECT 
+                        (SELECT COUNT(*) FROM job_tb) as job_num,
+                        (SELECT COUNT(*) FROM news) as new_num ,
+                        (SELECT COUNT(*) FROM profession_information) as camp_num ,
+                        (SELECT COUNT(*) FROM profession_news) as camp_new_num , 
+                        (SELECT COUNT(*) FROM user) as user_num ,
+                        (SELECT COUNT(*) FROM xuanjiang) as meet_num;";
+
+        $row = array();
+        $result = $worker->query($query);
+        if ($result){
+            $row = $result->fetch_assoc();
+        }
+        $worker->close();
+        return $row;
     }
 }
