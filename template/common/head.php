@@ -48,10 +48,10 @@
             <li class="<?php echo MANAGER;?>"><a href="manager.php">Manager</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="">Jobs info</a></li>
-            <li><a href="">News</a></li>
-            <li><a href="">Company info</a></li>
-            <li><a href="">Hiring News</a></li>
-            <li><a href="">Meeting info</a></li>
+            <li class="<?php echo JOBS;?>"><a href="jobs.php">Jobs info</a></li>
+            <li class="<?php echo NEWS;?>"><a href="news.php">News</a></li>
+            <li class="<?php echo COMPANY;?>"><a href="company.php">Company info</a></li>
+            <li class="<?php echo HIRING;?>"><a href="hiring.php">Hiring News</a></li>
+            <li class="<?php echo MEETING;?>"><a href="meet.php">Meeting info</a></li>
           </ul>
         </div>
