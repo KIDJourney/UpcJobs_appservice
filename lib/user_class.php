@@ -3,7 +3,7 @@
  * @Author: kidjourney
  * @Date:   2015-05-17 21:30:45
  * @Last Modified by:   kidjourney
- * @Last Modified time: 2015-05-17 23:36:51
+ * @Last Modified time: 2015-05-18 23:36:38
  */
     require_once("db_common.php");
     require_once("http_common.php");
@@ -28,7 +28,7 @@
             }
         }
 
-        public function getuserinfo(){
+        public function getinfo(){
             $res = $this->mysqliworker->query("SELECT * FROM user;");
             $result = array();
             while ($row=$res->fetch_assoc()){
