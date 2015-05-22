@@ -3,10 +3,10 @@
  * @Author: kidjourney
  * @Date:   2015-05-17 23:31:57
  * @Last Modified by:   kidjourney
- * @Last Modified time: 2015-05-18 23:48:31
+ * @Last Modified time: 2015-05-19 00:03:29
  */
 require_once("lib/data_class.php");
-
+define("TABLENAME","Manager");
 define("MANAGER","active");
 $job = new data_class("manager");
 $data = $job->getinfo();
