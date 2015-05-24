@@ -3,7 +3,7 @@
  * @Author: kidjourney
  * @Date:   2015-05-22 15:26:59
  * @Last Modified by:   kidjourney
- * @Last Modified time: 2015-05-23 21:49:33
+ * @Last Modified time: 2015-05-23 23:18:42
  */
 require_once("lib/db_common.php");
 class api_class {
@@ -19,6 +19,10 @@ class api_class {
         $request_type = $_GET['type'];
         if ($request_type == "job"){
             $this->get_job();
+            die();
+        }
+        if ($request_type == "news"){
+            $this->get_news();
             die();
         }
         if ($request_type == "meeting"){
@@ -41,6 +45,23 @@ class api_class {
             $this->get_collect();
             die();
         }
+    }
+
+    public function get_news(){
+        //upcexample.sinaapp.com/api.php?type=news&keyword=limit&content=10
+        if(isset($_GET['content'])){
+            $content = mysql_escape_string($_GET['content']);
+        } else {
+            $content = 10;
+        }
+        $res = $this->sqlworker->query("SELECT * FROM news order by publishtime limit 0 , $content");
+        $result = array();
+        while ($row = $res->fetch_assoc()){
+            $result[] = $row;
+        }
+        $result = json_encode($result);
+        $result = $this->parse($result);
+        print($result);
     }
 
     public function collect(){
@@ -88,7 +109,7 @@ class api_class {
         $user = mysql_escape_string($_GET['user']);
         $keyword = trim($_GET['keyword']);
         if ($keyword == "job"){
-            $query = "SELECT * FROM profession_information WHERE jobID IN (SELECT job_id FROM collect_job WHERE u_id='$user')";
+            $query = "SELECT * FROM profession_information WHERE jobID IN (SELECT distinct job_id FROM collect_job WHERE u_id='$user')";
             $res = $this->sqlworker->query($query);
             $result = array();
             while ($row = $res->fetch_assoc()){
@@ -99,7 +120,7 @@ class api_class {
             print($result);
         }
         if ($keyword =="guide"){
-            $query = "SELECT * FROM profession_news WHERE newsID IN (SELECT guide_id FROM collect_guide WHERE u_id='$user')";
+            $query = "SELECT * FROM profession_news WHERE newsID IN (SELECT distinct guide_id FROM collect_guide WHERE u_id='$user')";
             $res = $this->sqlworker->query($query);
             $result = array();
             while ($row = $res->fetch_assoc()){
@@ -110,7 +131,7 @@ class api_class {
             print($result);    
         }
         if ($keyword =="meet"){
-            $query = "SELECT * FROM xuanjiang WHERE TitleID IN (SELECT meet_id FROM collect_meet WHERE u_id='$user')";
+            $query = "SELECT * FROM xuanjiang WHERE TitleID IN (SELECT distinct meet_id FROM collect_meet WHERE u_id='$user')";
             $res = $this->sqlworker->query($query);
             $result = array();
             while ($row = $res->fetch_assoc()){
