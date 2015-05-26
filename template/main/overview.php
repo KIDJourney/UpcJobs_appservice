@@ -9,13 +9,8 @@
               <span class="text-muted"><?php echo $_SESSION['sql_cache']['user_num'];?></span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
-              <!-- <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail"> -->
-              <h4>Job nums</h4>
-              <span class="text-muted"><?php echo $_SESSION['sql_cache']['job_num'];?></span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
               <!-- <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail"> -->
-              <h4>Company nums</h4>
+              <h4>Job nums</h4>
               <span class="text-muted"><?php echo $_SESSION['sql_cache']['camp_num'];?></span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
