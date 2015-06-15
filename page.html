@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>app</title>
+	<script type="text/javascript" src="public/js/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="public/layer/layer.js"></script>
+	<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="public/css/style.css">
+</head>
+<body>
+	<h1>Something<small>someting else</small></h1>
+	<div class="container-fluid" id="container">
+		<div class="row">
+			<div class="col-xs-8 col-xs-offset-2 equal" id="logo">
+				<h2 class="text-info">Logo</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-2 inline-block test btn equal">
+				<img src="public/images/2.svg" class="img-responsive img-thumbnail">
+			</div>
+			<div class="col-xs-4 inline-block test btn equal">
+				<img src="public/images/1.svg" class="img-responsive img-thumbnail">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-2 line-block test btn equal">
+				<img src="public/images/3.svg" class="img-responsive img-thumbnail">
+			</div>
+			<div class="col-xs-4 line-block test btn equal">
+				<img src="public/images/4.svg" class="img-responsive img-thumbnail">
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+		function size(){
+			// $(".equal").css('height', function(){
+			// 	return $(this).width();
+			// });
+			$("#container").find("div").not(".row").css('height', function(){
+				return $(this).width();
+			});
+		}
+		size();
+		$(window).resize(function(event) {
+			/* Act on the event */
+			size();
+		});
+		var width=$(window).width();
+		var height=$(window).height();
+		$(".test").click(function(event){
+			var html='<h3>input your search keyword,please</h3>\r\n\
+					  <div id="divSearch" class="form-inline">\r\n\
+					  	<div class="form-group">\r\n\
+					    	<label for="search">Search by</label>\r\n\
+					    	<select class="form-control" id="selectTypes">\r\n\
+						    	<option value="position">position</option>\r\n\
+						    	<option value="date">date</option>\r\n\
+						    	<option value="major">major</option>\r\n\
+						    	<option value="jobId">jobId</option>\r\n\
+						    </select>\r\n\
+					    	<input type="text" class="form-control" id="search" placeholder="keyword">\r\n\
+					  	</div>\r\n\
+					  	<button class="btn btn-default" id="get">get</button>\r\n\
+					  </div>';
+			html+="<div id='content'></div>";
+			layer.open({
+				type:1,
+				title:"get json",
+				skin: 'layui-layer-molv',
+				shift: 2,
+				area:[width+"px",height+"px"],
+				shadeClose:true,
+				content:html
+				});
+			$("#get").click(function(event){
+					var load=layer.load();
+					var key=document.getElementById("search").value;
+					var selectType=$("#selectTypes").val();
+					var urls=new Array();
+					urls[0]="http://upcexample.sinaapp.com/api.php?type=job&keyword=pos&content=";
+					urls[1]="upcexample.sinaapp.com/api.php?type=job&keyword=major&content=";
+					urls[2]="upcexample.sinaapp.com/api.php?type=job&keyword=date&content=";
+					urls[3]="upcexample.sinaapp.com/api.php?type=job&keyword=jobid&content";
+					var url;
+					switch(selectType){
+						case "position":
+							url=urls[0];
+							break;
+						case "major":
+							url=urls[1];
+							break;
+						case "date":
+							url=urls[2];
+							break;
+						case "jobId":
+							url=urls[3];
+							break;
+						default:
+							alert("Something goes wrong");
+					}
+					url+=key;
+					$.get(url,function(data,status,xhr){
+						var getContent="<table class='table'>";
+						getContent+="<tr><th>name</th><th>company</th><th>salary</th><th>degree</th><th>operation</th></tr>";
+						$.each(data,function(i,v){
+							getContent+="<tr><td>"+v.job_name+"</td><td>"+v.company+"</td><td>"+v.salary+"</td><td>"+v.degree_demand+"</td><td><button class='btn btn-default more' id="+i+">more</button></td></tr>";
+							});
+						getContent+="</table>";
+						/*
+						layer.open({
+							type:1,
+							title:"result",
+							skin: 'layui-layer-molv',
+							shift: 6,
+							area:[width,height],
+							shadeClose:true,
+							content:getContent
+							});
+						*/
+						 $("#content").html(getContent);
+						 $(".more").click(function(event){
+						 	var i=this.id;
+						 	var detail="<h1>detailed infomation</h1>";
+						 	detail+="<ul><li>"+data[i].job_name+"</li><li>"+data[i].salary+"</li><li>"+data[i].company+"</li><li>"+data[i].address+"</li><li>"+data[i].nature+"</li><li>something else...</li></ul>";
+						 	var layerDetail=layer.open({
+											 		type:1,
+											 		title:"detail",
+											 		skin: 'layui-layer-molv',
+											 		shift:5,
+											 		area:[width,height],
+											 		shadeClose:true,
+											 		content:detail
+						 							});
+						 	});
+						});
+					layer.close(load);
+				});			 
+		});
+</script>
+</body>
+</html>

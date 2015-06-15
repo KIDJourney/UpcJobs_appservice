@@ -48,7 +48,6 @@
             <li class="<?php echo MANAGER;?>"><a href="manager.php">Manager</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li class="<?php echo JOBS;?>"><a href="jobs.php">Jobs info</a></li>
             <li class="<?php echo NEWS;?>"><a href="news.php">News</a></li>
             <li class="<?php echo COMPANY;?>"><a href="company.php">Company info</a></li>
             <li class="<?php echo HIRING;?>"><a href="hiring.php">Hiring News</a></li>
