@@ -64,11 +64,12 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => '',
-	'password' => '',
-	'database' => '',
-	'dbdriver' => 'mysqli',
+	'hostname' => SAE_MYSQL_HOST_M,
+	'username' => SAE_MYSQL_USER,
+	'password' => SAE_MYSQL_PASS,
+	'database' => SAE_MYSQL_DB,
+	'port'     => SAE_MYSQL_PORT,
+	'dbdriver' => 'mysql',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => TRUE,
