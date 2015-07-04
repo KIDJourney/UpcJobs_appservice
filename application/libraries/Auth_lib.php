@@ -54,6 +54,15 @@ class Auth_lib {
         return $this->ci->session->userdata('username') or false;
     }
 
+    public function get_username()
+    {
+        if (!$this->check_login()){
+            return False;
+        } else {
+            return $this->ci->session->userdata('username');
+        }
+    }
+
     /*
      * destroy the session
      *
