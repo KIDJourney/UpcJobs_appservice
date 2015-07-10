@@ -58,7 +58,10 @@ class Manageview extends CI_Controller{
         echo "This is guide page";
     }
 
+    function edit($type , $id)
+    {
 
+    }
     function debug()
     {
         $data = $this->manageview_model->get_userinfo();

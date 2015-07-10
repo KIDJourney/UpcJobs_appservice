@@ -34,4 +34,6 @@ class manageview_model extends  CI_Model{
         return $user_info->result();
     }
 
+
+
 }
