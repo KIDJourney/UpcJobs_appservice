@@ -1,5 +1,5 @@
 <?php
-class Manage extends CI_Controller {
+class manage extends CI_Controller {
     function __construct()
     {
         parent::__construct();
@@ -7,21 +7,22 @@ class Manage extends CI_Controller {
         $this->load->model('Auth_model');
         $this->load->library('Auth_lib');
         $this->load->helper('url');
+        if ($this->auth_lib->check_login()){
+            redirect('Manageview');
+        }
     }
+
+//    public function index()
+//    {
+////        if (!$this->auth_lib->check_login()){
+////            redirect('login');
+////        }
+////        redirect('Manageview');
+//        echo "Fuck me";
+//    }
 
     public function index()
     {
-        if (!$this->auth_lib->check_login()){
-            redirect('Manage/login');
-        }
-        redirect('Manageview');
-    }
-
-    public function login()
-    {
-        if ($this->auth_lib->check_login()){
-            redirect('Manage');
-        }
         $this->load->helper('form');
         $this->load->library('form_validation');
 

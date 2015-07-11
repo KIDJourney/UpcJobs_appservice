@@ -34,6 +34,22 @@ class manageview_model extends  CI_Model{
         return $user_info->result();
     }
 
+    function get_managerinfo()
+    {
+        $manage_info = $this->db->get('admin');
+        return $manage_info->result();
+    }
 
+    function get_jobinfo()
+    {
+        $job_info = $this->db->get('job');
+        return $job_info->result();
+    }
+
+    function get_meetinginfo()
+    {
+        $job_info = $this->db->get('meeting');
+        return $job_info->result();
+    }
 
 }

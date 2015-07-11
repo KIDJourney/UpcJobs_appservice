@@ -38,7 +38,8 @@
 |
 */
 
-$route['default_controller'] = "Manage";
+$route['default_controller'] = "manage";
+$route['manageview'] = "manageview";
 $route['404_override'] = '';
 
 
