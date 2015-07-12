@@ -15,7 +15,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/Manageview">Dashboard</a></li>
                 <li><a href="#"><?php echo $username;?></a></li>
-                <li><a href=<?php echo base_url('Manage/logoff')?>>Logout</a></li>
+                <li><a href=<?php echo base_url('logoff')?>>Logout</a></li>
             </ul>
         </div>
     </div>

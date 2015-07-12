@@ -13,6 +13,7 @@
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <br>
         <?php if(isset($login_failed)):?>
             <div class="alert alert-danger" role="alert">Username or Password is wrong , Please try again</div>
         <?php endif;?>

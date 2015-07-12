@@ -16,16 +16,11 @@
             <?php
             foreach($data as $subdata){
                 echo "<tr>";
-                $flag = 0;
-                $id = NULL;
                 foreach($subdata as $keys => $row){
-                    if (!$flag++){
-                        $id = $row;
-                    }
                     echo "<td>" . $row . "</td>";
                 }
                 echo "<td>";
-                echo "<a href=\"" . base_url("Manageview/edit/" . $edit_type . "/" . $id) ."\">Edit</a>";
+                echo "<a href=\"" . base_url("Manageview/edit/" . $edit_type . "/" . $subdata->id) ."\">Edit</a>";
                 echo "</td>";
                 echo "</tr>";
             }
