@@ -76,10 +76,24 @@ class Manageview extends CI_Controller{
 
     function edit($type , $id)
     {
-        $this->load->view("common/head",array('title'=>"Editing"));
+        $type_list = array("job","guide","meeting","user","manager");
+        if (!in_array($type,$type_list))
+            show_404();
+        $data = $this->manageview_model->get_type_with_id($type,$id);
+        if ($this->input->post()){
+            $post_data = array();
+            foreach ($data as $keys => $value)
+                $post_data[$keys] = $value;
+            
+        }
+
+
+        $this->load->view("common/head",array('title'=>"Editing $type"));
         $this->load->view('manageview/topbar',array('username'=>$this->auth_lib->get_username()));
-        $this->load->view('manageview/edit',array("type"=>$type));
+        $this->load->view('manageview/edit',array("type"=>$type,"data"=>$data));
+
     }
+
     function debug()
     {
         $data = $this->manageview_model->get_userinfo();
