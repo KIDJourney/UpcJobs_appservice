@@ -39,6 +39,7 @@
 */
 
 $route['default_controller'] = "manage";
+$route['logoff'] = "manage/logoff";
 $route['manageview'] = "manageview";
 $route['404_override'] = '';
 

@@ -7,9 +7,6 @@ class manage extends CI_Controller {
         $this->load->model('Auth_model');
         $this->load->library('Auth_lib');
         $this->load->helper('url');
-        if ($this->auth_lib->check_login()){
-            redirect('Manageview');
-        }
     }
 
 //    public function index()
@@ -23,6 +20,10 @@ class manage extends CI_Controller {
 
     public function index()
     {
+        if ($this->auth_lib->check_login()){
+            redirect('Manageview');
+        }
+
         $this->load->helper('form');
         $this->load->library('form_validation');
 
