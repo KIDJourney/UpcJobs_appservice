@@ -16,15 +16,17 @@
             <?php
             foreach($data as $subdata){
                 echo "<tr>";
+                $flag = 0;
+                $id = NULL;
                 foreach($subdata as $keys => $row){
-                    if ($keys == "user_passwd"){
-                        echo "<td>***********</td>";
-                        continue;
+                    if (!$flag++){
+                        $id = $row;
                     }
                     echo "<td>" . $row . "</td>";
                 }
-                // echo "<td>" . "<a href=" . "\"http://upcexample.sinaapp.com/user.php?method=del&uid=" .
-                //             $subdata['usernameID'] . "\">Del</a>" . "</td>";
+                echo "<td>";
+                echo "<a href=\"" . base_url("Manageview/edit/" . $edit_type . "/" . $id) ."\">Edit</a>";
+                echo "</td>";
                 echo "</tr>";
             }
             ?>
