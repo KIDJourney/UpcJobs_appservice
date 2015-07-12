@@ -5,7 +5,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">编辑 <?php echo $type?></div>
                 <div class="panel-body">
-                    <?php if (isset($error)){ ?>
+                    <?php if($error){ ?>
                       <div clas="alter alter-danger">
                           <strong>Error</strong> There is something wrong with your input;
                           <br>
@@ -28,7 +28,7 @@
                                     echo "</div>";
                                 }
                         ?>
-                        <button class="btn btn-lg btn-info">编辑 <?php echo $type?></button>
+                        <button class="btn btn-lg btn-primary">编辑 <?php echo $type?></button>
                     </form>
 
                 </div>
