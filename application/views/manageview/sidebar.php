@@ -5,7 +5,7 @@
             <ul class="nav nav-sidebar">
                 <li class="<?php echo isset($overview)?"active":"";?>"><a href="overview">Overview <span class="sr-only">(current)</span></a></li>
                 <li class="<?php echo isset($user)?"active":"";?>"><a href="user">User</a></li>
-                <li class="<?php echo isset($manage)?"active":"";?>"><a href="manager">Manager</a></li>
+                <li class="<?php echo isset($manager)?"active":"";?>"><a href="manager">Manager</a></li>
             </ul>
             <ul class="nav nav-sidebar">
                 <li class="<?php echo isset($guide)?"active":"";?>"><a href="guide">Guide</a></li>
