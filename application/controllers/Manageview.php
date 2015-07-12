@@ -30,68 +30,65 @@ class Manageview extends CI_Controller{
 
     function user()
     {
-        $data = $this->manageview_model->get_userinfo();
-        $active_tag = array("user"=>true);
-        $this->load->view("common/head",array('title'=>"Manage User"));
-        $this->load->view('manageview/topbar',array('username'=>$this->auth_lib->get_username()));
-        $this->load->view('manageview/sidebar',$active_tag);
-        $this->load->view('manageview/data.php',array("data"=>$data,"tablename"=>"user","edit_type" =>"user"));
+        $this->_load_view_with_type('user');
     }
 
-    function manager()
+    function admin()
     {
-        $data = $this->manageview_model->get_managerinfo();
-        $active_tag = array("manager"=>true);
-        $this->load->view("common/head",array('title'=>"Manage admin"));
-        $this->load->view('manageview/topbar',array('username'=>$this->auth_lib->get_username()));
-        $this->load->view('manageview/sidebar',$active_tag);
-        $this->load->view('manageview/data.php',array("data"=>$data,"tablename"=>"Admin","edit_type" => "manager"));
+        $this->_load_view_with_type('admin');
     }
 
     function job()
     {
-        $data = $this->manageview_model->get_jobinfo();
-        $active_tag = array("manager"=>true);
-        $this->load->view("common/head",array('title'=>"Manage Jobs"));
-        $this->load->view('manageview/topbar',array('username'=>$this->auth_lib->get_username()));
-        $this->load->view('manageview/sidebar',$active_tag);
-        $this->load->view('manageview/data.php',array("data"=>$data,"tablename"=>"Jobs","edit_type"=>"job"));
-
+        $this->_load_view_with_type('job');
     }
 
     function meeting()
     {
-        $data = $this->manageview_model->get_meetinginfo();
-        $active_tag = array("manager"=>true);
-        $this->load->view("common/head",array('title'=>"Manage Meeting"));
-        $this->load->view('manageview/topbar',array('username'=>$this->auth_lib->get_username()));
-        $this->load->view('manageview/sidebar',$active_tag);
-        $this->load->view('manageview/data.php',array("data"=>$data,"tablename"=>"Jobs","edit_type"=>meeting));
+        $this->_load_view_with_type('meeting');
     }
 
     function guide()
     {
-        echo "This is guide page";
+        $this->_load_view_with_type('guide');
     }
 
     function edit($type , $id)
     {
-        $type_list = array("job","guide","meeting","user","manager");
+        $type_list = array("job","guide","meeting","user","admin");
+        $error = false;
         if (!in_array($type,$type_list))
             show_404();
         $data = $this->manageview_model->get_type_with_id($type,$id);
         if ($this->input->post()){
             $post_data = array();
-            foreach ($data as $keys => $value)
-                $post_data[$keys] = $value;
-            
+            foreach ($data as $subdata)
+                foreach ($subdata as $keys => $value)
+                    $post_data[$keys] = $this->input->post($keys);
+            unset($post_data['id']);
+//            print_r($post_data);
+//            return;
+            if ($this->manageview_model->update_type_with_id($type,$id,$post_data)){
+                redirect("Manageview/".$type);
+            } else {
+                $error = true;
+            }
         }
-
 
         $this->load->view("common/head",array('title'=>"Editing $type"));
         $this->load->view('manageview/topbar',array('username'=>$this->auth_lib->get_username()));
-        $this->load->view('manageview/edit',array("type"=>$type,"data"=>$data));
+        $this->load->view('manageview/edit',array("type"=>$type,"data"=>$data,"error"=>$error));
 
+    }
+
+    function _load_view_with_type($type)
+    {
+        $data = $this->manageview_model->get_info_with_type($type);
+        $active_tag = array($type=>true);
+        $this->load->view("common/head",array('title'=>"Manage $type"));
+        $this->load->view('manageview/topbar',array('username'=>$this->auth_lib->get_username()));
+        $this->load->view('manageview/sidebar',$active_tag);
+        $this->load->view('manageview/data.php',array("data"=>$data,"tablename"=>"$type","edit_type" =>"$type"));
     }
 
     function debug()

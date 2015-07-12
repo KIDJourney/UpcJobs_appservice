@@ -28,28 +28,10 @@ class manageview_model extends  CI_Model{
         return $overview_data;
     }
 
-    function get_userinfo()
+    function get_info_with_type($type)
     {
-        $user_info = $this->db->get('user');
-        return $user_info->result();
-    }
-
-    function get_managerinfo()
-    {
-        $manage_info = $this->db->get('admin');
-        return $manage_info->result();
-    }
-
-    function get_jobinfo()
-    {
-        $job_info = $this->db->get('job');
-        return $job_info->result();
-    }
-
-    function get_meetinginfo()
-    {
-        $job_info = $this->db->get('meeting');
-        return $job_info->result();
+        $data_info = $this->db->get($type);
+        return $data_info->result();
     }
 
     function get_type_with_id($type , $id)
