@@ -5,26 +5,30 @@
             <div class="panel panel-default">
                 <div class="panel-heading">编辑 <?php echo $type?></div>
                 <div class="panel-body">
-
-<!--                    @if (count($errors) > 0)-->
-<!--                    <div class="alert alert-danger">-->
-<!--                        <strong>Whoops!</strong> There were some problems with your input.<br><br>-->
-<!--                        <ul>-->
-<!--                            @foreach ($errors->all() as $error)-->
-<!--                            <li>{{ $error }}</li>-->
-<!--                            @endforeach-->
-<!--                        </ul>-->
-<!--                    </div>-->
-<!--                    @endif-->
-
+                    <?php if (isset($error)){ ?>
+                      <div clas="alter alter-danger">
+                          <strong>Error</strong> There is something wrong with your input;
+                          <br>
+                          <br>
+                      </div>
+                    <?php } ?>
                     <form action="<?php echo current_url();?>" method="POST">
-                        <input name="_method" type="hidden" value="PUT">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="text" name="title" class="form-control" required="required" >
-                        <br>
-                        <textarea name="body" rows="10" class="form-control" required="required"></textarea>
-                        <br>
-                        <button class="btn btn-lg btn-info">编辑 Page</button>
+                        <?php
+                            foreach($data as $subdata)
+                                foreach($subdata as $key => $value){
+                                    if ($key == "id")
+                                        continue;
+                                    echo "<div class=\"form-group\">";
+                                    echo "<label>$key</label>";
+                                    if (strlen($value) > 32){
+                                        echo "<textarea name=\"$key\" class=\"form-control\" required=\"required\">$value</textarea>" . "<br>";
+                                    } else {
+                                        echo "<input name=\"$key\" class=\"form-control\" required=\"required\" value=\"$value\">" . "<br>";
+                                    }
+                                    echo "</div>";
+                                }
+                        ?>
+                        <button class="btn btn-lg btn-info">编辑 <?php echo $type?></button>
                     </form>
 
                 </div>

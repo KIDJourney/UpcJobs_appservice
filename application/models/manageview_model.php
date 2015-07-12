@@ -52,4 +52,17 @@ class manageview_model extends  CI_Model{
         return $job_info->result();
     }
 
+    function get_type_with_id($type , $id)
+    {
+        $data = $this->db->get_where($type,array("id"=>$id));
+        return $data->result();
+    }
+
+    function update_type_with_id($type,$id,$data)
+    {
+        $this->db->where('id',$id);
+        $result = $this->db->update($type , $data);
+        return $result;
+    }
+
 }
