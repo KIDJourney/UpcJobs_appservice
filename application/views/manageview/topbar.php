@@ -9,11 +9,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo base_url('Manageview/overview');?>">UPC JOB</a>
+            <a class="navbar-brand" href="<?php echo base_url('manageview/overview');?>">UPC JOB</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/Manageview">Dashboard</a></li>
+                <li><a href="/manageview">Dashboard</a></li>
                 <li><a href="#"><?php echo $username;?></a></li>
                 <li><a href=<?php echo base_url('logoff')?>>Logout</a></li>
             </ul>

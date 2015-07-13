@@ -1,5 +1,5 @@
 <?php
-class manage extends CI_Controller {
+class Manage extends CI_Controller {
     function __construct()
     {
         parent::__construct();
@@ -56,6 +56,6 @@ class manage extends CI_Controller {
     public function logoff()
     {
         $this->auth_lib->logoff();
-        echo "Logoff success";
+        redirect();
     }
 }
