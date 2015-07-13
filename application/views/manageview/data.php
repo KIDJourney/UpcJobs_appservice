@@ -22,7 +22,7 @@
                 }
                 echo "<td>";
                 echo "<a href=\"" . base_url("manageview/edit/" . $edit_type . "/" . $subdata->id) ."\">Edit</a>";
-                echo " | ";
+                echo "<br>";
                 echo "<a href=\"" . base_url("manageview/delete/" . $edit_type . "/" . $subdata->id) ."\">Delete</a>";
                 echo "</td>";
                 echo "</tr>";
