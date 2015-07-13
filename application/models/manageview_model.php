@@ -47,4 +47,19 @@ class manageview_model extends  CI_Model{
         return $result;
     }
 
+    function delete_with_type_id($type,$id)
+    {
+        return $this->db->delete($type,array('id'=>$id));
+    }
+
+    function get_field_metadata($type)
+    {
+        $fielddata = $this->db->field_data($type);
+        return $fielddata;
+    }
+
+    function add_type($type,$data)
+    {
+        return $this->db->insert($type,$data);
+    }
 }

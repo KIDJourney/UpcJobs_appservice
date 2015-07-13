@@ -9,12 +9,14 @@ class Manageview extends CI_Controller{
         $this->load->model('manageview_model');
         if (!$this->auth_lib->check_login()) {
             redirect("login");
+            return ;
         }
     }
 
     function index()
     {
         redirect("Manageview/overview");
+        return;
     }
 
     function overview()
@@ -70,6 +72,7 @@ class Manageview extends CI_Controller{
 //            return;
             if ($this->manageview_model->update_type_with_id($type,$id,$post_data)){
                 redirect("Manageview/".$type);
+                return;
             } else {
                 $error = true;
             }
@@ -88,10 +91,38 @@ class Manageview extends CI_Controller{
         $this->load->view("common/head",array('title'=>"Manage $type"));
         $this->load->view('manageview/topbar',array('username'=>$this->auth_lib->get_username()));
         $this->load->view('manageview/sidebar',$active_tag);
-        $this->load->view('manageview/data.php',array("data"=>$data,"tablename"=>"$type","edit_type" =>"$type"));
+        $this->load->view('manageview/data.php',array("data"=>$data,"tablename"=>"Viewing $type","edit_type" =>"$type"));
     }
 
-    function debug()
+    function delete($type , $id)
+    {
+        if ($this->manageview_model->delete_with_type_id($type,$id)){
+            redirect("Manageview/".$type);
+            return;
+        } else {
+            echo "Delete Failed !";
+        }
+    }
+
+    function add($type)
+    {
+//        $this->load->view("") blablabla
+        $field_data = $this->manageview_model->get_field_metadata($type);
+        $error = false;
+        if ($this->input->post()){
+            if ($this->manageview_model->add_type($type,$this->input->post())){
+                redirect("Manageview/".$type);
+                return;
+            } else {
+                $error=false;
+            }
+        }
+        $this->load->view("common/head",array('title'=>"Add $type"));
+        $this->load->view('manageview/topbar',array('username'=>$this->auth_lib->get_username()));
+        $this->load->view('manageview/add',array("type"=>$type,"field_metadata"=>$field_data,"error"=>$error));
+    }
+
+    function _debug()
     {
         $data = $this->manageview_model->get_userinfo();
         print_r($data);
