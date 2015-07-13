@@ -10,6 +10,6 @@
             <ul class="nav nav-sidebar">
                 <li class="<?php echo isset($guide)?"active":"";?>"><a href="guide">Guide</a></li>
                 <li class="<?php echo isset($job)?"active":"";?>"><a href="job">Job</a></li>
-                <li class="<?php echo isset($meeting)?"active":"";?>"><a href="meeting">Meeting info</a></li>
+                <li class="<?php echo isset($meeting)?"active":"";?>"><a href="meeting">Meeting</a></li>
             </ul>
         </div>
