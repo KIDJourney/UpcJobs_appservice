@@ -15,7 +15,7 @@ class Manageview extends CI_Controller{
 
     function index()
     {
-        redirect("Manageview/overview");
+        redirect("manageview/overview");
         return;
     }
 
@@ -71,7 +71,7 @@ class Manageview extends CI_Controller{
 //            print_r($post_data);
 //            return;
             if ($this->manageview_model->update_type_with_id($type,$id,$post_data)){
-                redirect("Manageview/".$type);
+                redirect("manageview/".$type);
                 return;
             } else {
                 $error = true;
@@ -97,7 +97,7 @@ class Manageview extends CI_Controller{
     function delete($type , $id)
     {
         if ($this->manageview_model->delete_with_type_id($type,$id)){
-            redirect("Manageview/".$type);
+            redirect("manageview/".$type);
             return;
         } else {
             echo "Delete Failed !";
@@ -111,7 +111,7 @@ class Manageview extends CI_Controller{
         $error = false;
         if ($this->input->post()){
             if ($this->manageview_model->add_type($type,$this->input->post())){
-                redirect("Manageview/".$type);
+                redirect("manageview/".$type);
                 return;
             } else {
                 $error=false;
