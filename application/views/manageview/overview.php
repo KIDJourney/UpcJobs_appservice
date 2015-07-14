@@ -1,4 +1,4 @@
-<link href="../../../static/css/overview.css" rel="stylesheet">
+<link href="../../../static/css/manage/overview.css" rel="stylesheet">
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h1 class="page-header">Dashboard</h1>
 

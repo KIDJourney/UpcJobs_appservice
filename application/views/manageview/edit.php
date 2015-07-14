@@ -1,4 +1,4 @@
-<link href="../../../static/css/edit.css" rel="stylesheet">
+<link href="../../../static/css/manage/edit.css" rel="stylesheet">
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">

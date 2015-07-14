@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <link href="../../../static/css/sidebar.css" rel="stylesheet">
+    <link href="../../../static/css/manage/sidebar.css" rel="stylesheet">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
