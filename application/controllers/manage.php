@@ -4,8 +4,8 @@ class Manage extends CI_Controller {
     {
         parent::__construct();
         $this->load->library('session');
-        $this->load->model('Auth_model');
         $this->load->library('Auth_lib');
+        $this->auth_lib->init_lib('Auth_model','adminname');
         $this->load->helper('url');
     }
 
