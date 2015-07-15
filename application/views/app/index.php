@@ -52,7 +52,7 @@
           <span class="icon icon-search"></span>
           <span class="tab-label">职位搜索</span>
         </a>
-        <a href="../app/more" databottom:0;-ignore="push" class="tab-item">
+        <a href="../app/meeting" databottom:0;-ignore="push" class="tab-item">
           <span class="icon icon-more"></span>
           <span class="tab-label">校园宣讲</span>
         </a>

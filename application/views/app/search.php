@@ -113,7 +113,7 @@
       var getContent = "<table class='table'>";
       getContent += "<tr><th>职位</th><th>地点</th><th>公司</th><th>工资</th><th>操作</th></tr>";
       $.each(data, function(i, v) {
-        getContent += "<tr><td>" + v.job_name + "</td><td>" + v.job_position + "</td><td>" + v.job_company + "</td><td>" + v.job_salary + "</td><td><a href='/detail' data-ignore='push'><button class='btn btn-default more' id=" + i +
+        getContent += "<tr><td>" + v.job_name + "</td><td>" + v.job_position + "</td><td>" + v.job_company + "</td><td>" + v.job_salary + "</td><td><a href='../app/detail' data-ignore='push'><button class='btn btn-default more' id=" + i +
           ">更多</button></a></td></tr>";
       });
       getContent += "</table>";
