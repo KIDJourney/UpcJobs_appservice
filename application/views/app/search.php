@@ -47,7 +47,7 @@
         <div class="col-xs-8">
           <select id="selectTypes" class="form-control">
             <option value="position">地区</option>
-            <option value="date">日期</option>
+            <option value="name">职位</option>
             <option value="major">专业</option>
             <option value="jobId">jobID</option>
           </select>
@@ -87,9 +87,9 @@
     var key = document.getElementById("keyword").value;
     var selectType = $("#selectTypes").val();
     var urls = new Array();
-    urls[0] = "http://upcexample.sinaapp.com/api.php?type=job&keyword=pos&content=";
-    urls[1] = "http://upcexample.sinaapp.com/api.php?type=job&keyword=major&content=";
-    urls[2] = "http://upcexample.sinaapp.com/api.php?type=job&keyword=date&content=";
+    urls[0] = "http://2.upcexample.sinaapp.com/api/job/pos/";
+    urls[1] = "http://2.upcexample.sinaapp.com/api/job/major/";
+    urls[2] = "http://2.upcexample.sinaapp.com/api/job/name/";
     urls[3] = "http://upcexample.sinaapp.com/api.php?type=job&keyword=jobid&content";
     var url;
     switch (selectType) {
@@ -99,7 +99,7 @@
       case "major":
         url = urls[1];
         break;
-      case "date":
+      case "name":
         url = urls[2];
         break;
       case "jobId":
@@ -110,13 +110,13 @@
     }
     url += key;
     $.get(url, function(data, status, xhr) {
-      var getContent = "<div class='table-responsive'><table class='table'>";
-      getContent += "<tr><th>职位</th><th>公司</th><th>薪水</th><th>学历</th><th>操作</th></tr>";
+      var getContent = "<table class='table'>";
+      getContent += "<tr><th>职位</th><th>地点</th><th>公司</th><th>工资</th><th>操作</th></tr>";
       $.each(data, function(i, v) {
-        getContent += "<tr><td>" + v.job_name + "</td><td>" + v.company + "</td><td>" + v.salary + "</td><td>" + v.degree_demand + "</td><td><a href='/detail' data-ignore='push'><button class='btn btn-default more' id=" + i +
+        getContent += "<tr><td>" + v.job_name + "</td><td>" + v.job_position + "</td><td>" + v.job_company + "</td><td>" + v.job_salary + "</td><td><a href='/detail' data-ignore='push'><button class='btn btn-default more' id=" + i +
           ">更多</button></a></td></tr>";
       });
-      getContent += "</table></div>";
+      getContent += "</table>";
       $("#content").html(getContent);
     });
     $("#searchForm").slideUp();
