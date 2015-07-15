@@ -49,8 +49,7 @@ class Manage extends CI_Controller {
 
     public function debug()
     {
-        echo "Debuging" . "<br>";
-        print_r($this->session->userdata('username'));
+
     }
 
     public function logoff()
