@@ -4,6 +4,17 @@ class App extends CI_Controller{
     function __construct()
     {
         parent::__construct();
+        $this->load->library('Auth_lib');
+        $this->auth_lib->init_lib('User_model','username');
+    }
+
+    function login()
+    {
+        if ($this->input->post()){
+
+        }
+
+        $this->load->view('app/login');
     }
 
     function index()
@@ -16,6 +27,11 @@ class App extends CI_Controller{
         $this->load->view("app/search");
     }
 
+    function meeting()
+    {
+        $this->load->view('app/meeting');
+    }
+
     function info()
     {
         $this->load->view('app/info');
@@ -24,11 +40,6 @@ class App extends CI_Controller{
     function user()
     {
         $this->load->view('app/user');
-    }
-
-    function login()
-    {
-        $this->load->view('app/login');
     }
 
     function detail()
@@ -45,4 +56,10 @@ class App extends CI_Controller{
     {
         $this->load->view('app/about');
     }
+
+    function more()
+    {
+        $this->load->view('app/more');
+    }
+
 }
