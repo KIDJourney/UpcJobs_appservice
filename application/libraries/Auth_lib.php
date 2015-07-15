@@ -6,11 +6,18 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  * */
 class Auth_lib {
     private $ci ;
+    private $session_name;
 
     function __construct()
     {
         $this->ci = & get_instance();
         $this->ci->load->model('Auth_model');
+    }
+
+    function init_lib($model_load,$session_name)
+    {
+        $this->ci->load->model($model_load);
+        $this->session_name = $session_name;
     }
 
     /*
@@ -40,7 +47,7 @@ class Auth_lib {
      * */
     private function set_session($username)
     {
-        $this->ci->session->set_userdata(array('username'=>$username));
+        $this->ci->session->set_userdata(array($this->session_name=>$username));
     }
 
     /*
@@ -51,7 +58,7 @@ class Auth_lib {
      * */
     public function check_login()
     {
-        return $this->ci->session->userdata('username') or false;
+        return $this->ci->session->userdata($this->session_name) or false;
     }
 
     public function get_username()
@@ -59,7 +66,7 @@ class Auth_lib {
         if (!$this->check_login()){
             return False;
         } else {
-            return $this->ci->session->userdata('username');
+            return $this->ci->session->userdata($this->session_name);
         }
     }
 
