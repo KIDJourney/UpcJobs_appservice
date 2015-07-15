@@ -23,7 +23,7 @@ class App extends CI_Controller{
 
     function user()
     {
-        $this->load->view('app/info');
+        $this->load->view('app/user');
     }
 
     function login()
