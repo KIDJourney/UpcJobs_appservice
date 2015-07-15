@@ -15,7 +15,7 @@ class Api_model extends CI_Model {
             return false;
         }
 
-        $this->db->like($table_map[$type],$content);
+        $this->db->like($table_map[$type],urldecode($content));
         return $this->db->get('job')->result();
     }
 
@@ -33,6 +33,5 @@ class Api_model extends CI_Model {
     {
         return $this->db->get('news',$range*10 , ($range-1)*10)->result();
     }
-
 
 }
