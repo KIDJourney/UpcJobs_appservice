@@ -5,10 +5,11 @@ class Manageview extends CI_Controller{
         parent::__construct();
         $this->load->library('session');
         $this->load->library('Auth_lib');
+        $this->auth_lib->init_lib('Auth_model','adminname');
         $this->load->helper('url');
         $this->load->model('manageview_model');
         if (!$this->auth_lib->check_login()) {
-            redirect("login");
+            redirect();
             return ;
         }
     }
