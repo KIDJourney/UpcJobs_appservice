@@ -23,7 +23,7 @@
       <span class="icon icon-home"></span>
       <span class="tab-label">home</span>
     </a>
-    <a href="../app/login" title="login" data-ignore="push" class="tab-item">
+    <a href="../app/user" title="login" data-ignore="push" class="tab-item">
       <span class="icon icon-person"></span>
       <span class="tab-label">profile</span>
     </a>
