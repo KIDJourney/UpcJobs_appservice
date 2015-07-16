@@ -28,11 +28,11 @@
       <span class="icon icon-home"></span>
       <span class="tab-label">home</span>
     </a>
-    <a href="../app/login" title="login" data-ignore="push" class="tab-item">
+    <a href="../app/user" title="login" data-ignore="push" class="tab-item">
       <span class="icon icon-person"></span>
       <span class="tab-label">profile</span>
     </a>
-    <a href="../app" data-ignore="push" class="tab-item">
+    <a href="../app/info" data-ignore="push" class="tab-item">
       <span class="icon icon-more"></span>
       <span class="tab-label">Info</span>
     </a>
@@ -44,24 +44,41 @@
   <div id="content" ng-controller="tableCtrl" class="content container-fluid">
     <dl class="dl-horizontal">
       <dt>职位:</dt>
-      <dd ng-bind="job.job_name"></dd>
+      <dd <?php echo $data->job_name;?></dd>
     </dl>
     <dl class="dl-horizontal">
       <dt>公司:</dt>
-      <dd ng-bind="job.company"></dd>
+      <dd <?php echo $data->job_company;?></dd>
     </dl>
     <dl class="dl-horizontal">
       <dt>薪水:</dt>
-      <dd ng-bind="job.salary"></dd>
+      <dd <?php echo $data->job_salary;?></dd>
     </dl>
     <dl class="dl-horizontal">
       <dt>地址:</dt>
-      <dd ng-bind="job.address"></dd>
+      <dd <?php echo $data->job_position;?></dd>
     </dl>
     <dl class="dl-horizontal">
-      <dt>Else:</dt>
-      <dd>Something Else</dd>
+      <dt>学历要求:</dt>
+      <dd><?php echo $data->job_degree;?></dd>
     </dl>
+    <dl class="dl-horizontal">
+      <dt>专业要求:</dt>
+      <dd><?php echo $data->job_major;?></dd>
+    </dl>
+    <dl class="dl-horizontal">
+      <dt>公司类别:</dt>
+      <dd><?php echo $data->job_companytype;?></dd>
+    </dl>
+    <dl class="dl-horizontal">
+      <dt>公司简介:</dt>
+      <dd <?php echo $data->job_companyinfo;?></dd>
+    </dl>
+    <dl class="dl-horizontal">
+      <dt>职位描述:</dt>
+      <dd <?php echo $data->job_description;?></dd>
+    </dl>
+
   </div>
   <script>
     var app = angular.module("myApp", []);

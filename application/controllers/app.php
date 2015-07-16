@@ -5,6 +5,7 @@ class App extends CI_Controller{
     {
         parent::__construct();
         $this->load->library('Auth_lib');
+        $this->load->model('app_model');
         $this->auth_lib->init_lib('User_model','username');
     }
 
@@ -15,6 +16,14 @@ class App extends CI_Controller{
         }
 
         $this->load->view('app/login');
+    }
+
+    function detail($id)
+    {
+        $data = $this->app_model->get_job_with_id($id);
+        if (!$data)
+            show_404();
+        $this->load->view('app/detail',array('data'=>$data[0]));
     }
 
     function index()
@@ -40,11 +49,6 @@ class App extends CI_Controller{
     function user()
     {
         $this->load->view('app/user');
-    }
-
-    function detail()
-    {
-        $this->load->view('app/detail');
     }
 
     function register()
