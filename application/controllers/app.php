@@ -4,18 +4,37 @@ class App extends CI_Controller{
     function __construct()
     {
         parent::__construct();
+        $this->load->library('session');
         $this->load->library('Auth_lib');
-        $this->load->model('app_model');
         $this->auth_lib->init_lib('User_model','username');
+
+        $this->load->model('app_model');
+        $this->load->helper('url');
     }
 
     function login()
     {
-        if ($this->input->post()){
-
+        if ($this->auth_lib->check_login()){
+            redirect('app/user');
         }
 
-        $this->load->view('app/login');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('username','Username','required');
+        $this->form_validation->set_rules('password','Password','required');
+
+        if ($this->form_validation->run() === FALSE){
+            $this->load->view('app/login');
+        } else {
+            if ($this->auth_lib->login($this->input->post('username'),$this->input->post('password'))) {
+                redirect("app/user");
+            }
+            else {
+                $error = "Woops , there are something wrong with your input";
+                $this->load->view('app/login');
+            }
+        }
     }
 
     function detail($id)
@@ -23,11 +42,16 @@ class App extends CI_Controller{
         $data = $this->app_model->get_job_with_id($id);
         if (!$data)
             show_404();
+//        print_r($data);
         $this->load->view('app/detail',array('data'=>$data[0]));
     }
 
     function index()
     {
+
+        if ($this->auth_lib->check_login()){
+            $this->load->view('app/index',array('username'=>$this->auth_lib->get_username()));
+        }
         $this->load->view("app/index");
     }
 
@@ -48,7 +72,13 @@ class App extends CI_Controller{
 
     function user()
     {
-        $this->load->view('app/user');
+
+        if ($this->auth_lib->check_login()) {
+            $this->load->view('app/user');
+        } else{
+            redirect('app/login');
+        }
+
     }
 
     function register()
@@ -63,7 +93,13 @@ class App extends CI_Controller{
 
     function more()
     {
-        $this->load->view('app/more');
+        $this->load->view('app/about');
+    }
+
+    function debug()
+    {
+        print_r($this->session->userdata);
+        echo $this->auth_lib->debug();
     }
 
 }

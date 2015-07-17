@@ -18,7 +18,7 @@
     <h1 class="title">登录</h1>
   </header>
   <div class="bar bar-standard bar-footer-secondary" style="text-align:center;">
-	<a href="/register" class="btn btn-link">注册</a>
+	<a href="../app/register" class="btn btn-link">注册</a>
   </div>
   <foot class="bar bar-tab">
     <a href="../app" title="home" data-ignore="push" class="tab-item">
@@ -39,14 +39,14 @@
     </a>
   </foot>
   <div class="content">
-    <form class="input-group">
+    <form class="input-group" method="post" action="<?php echo current_url();?>" >
       <div class="input-row">
         <label for="name">username:</label>
-        <input id="name" type="text" name="name" placeholder="your name" />
+        <input id="name" type="text" name="username" placeholder="your name" />
       </div>
       <div class="input-row">
         <label for="password">password:</label>
-        <input id="password" type="text" password="password" placeholder="your password" />
+        <input id="password" type="password" name="password" placeholder="your password" />
       </div>
       <button class="btn btn-primary btn-block" style="width:96%;;margin:5px auto;">login</button>
     </form>
