@@ -123,10 +123,9 @@ class Manageview extends CI_Controller{
         $this->load->view('manageview/add',array("type"=>$type,"field_metadata"=>$field_data,"error"=>$error));
     }
 
-    function _debug()
+    function debug()
     {
-        $data = $this->manageview_model->get_userinfo();
-        print_r($data);
+        print_r($this->session->userdata);
     }
 
 }

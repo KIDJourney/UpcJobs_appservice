@@ -36,8 +36,10 @@ class Manage extends CI_Controller {
             $this->load->view('manage/login');
             $this->load->view('common/footer');
         } else {
-            if ($this->auth_lib->login($this->input->post('username'),$this->input->post('passwd')))
+            if ($this->auth_lib->login($this->input->post('username'),$this->input->post('passwd'))) {
                 redirect("manageview");
+                return;
+            }
             else {
                 $data['login_failed'] = true;
                 $this->load->view('common/head',$data);
@@ -49,7 +51,6 @@ class Manage extends CI_Controller {
 
     public function debug()
     {
-
     }
 
     public function logoff()
