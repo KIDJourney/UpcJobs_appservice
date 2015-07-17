@@ -20,8 +20,8 @@
                                         continue;
                                     echo "<div class=\"form-group\">";
                                     echo "<label>$key</label>";
-                                    if (strlen($value) > 32){
-                                        echo "<textarea name=\"$key\" class=\"form-control\" required=\"required\">$value</textarea>" . "<br>";
+                                    if (strlen($value) > 56){
+                                        echo "<textarea name=\"$key\" class=\"form-control\" rows=\"10\" required=\"required\">$value</textarea>" . "<br>";
                                     } else {
                                         echo "<input name=\"$key\" class=\"form-control\" required=\"required\" value=\"$value\">" . "<br>";
                                     }

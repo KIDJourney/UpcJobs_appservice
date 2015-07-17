@@ -16,7 +16,7 @@
     <span title="refresh" class="icon icon-refresh pull-right"></span>
     <h1 class="title">注册</h1>
   </header>
-  <div class="contzent">
+  <div class="content">
     <form class="input-group">
       <div class="input-row">
         <label>用户名</label>

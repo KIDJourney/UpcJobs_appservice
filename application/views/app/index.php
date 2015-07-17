@@ -22,7 +22,11 @@
   <header class="bar bar-nav">
     <span id="back" title="back" class="icon icon-left-nav pull-left"></span>
     <a href="../app/login">
+      <?php if (isset($username)){?>
+      <button title="../app/user" class="btn btn-link pull-right"><?php echo $username?></button>
+      <?php } else { ?>
       <button title="../app/login" class="btn btn-link pull-right">登录</button>
+      <?php }?>
     </a>
     <h1 class="title">首页</h1>
   </header>
@@ -62,6 +66,10 @@
         </a>
       </div>
       <div style="border-top:0;" class="bar-tab">
+<!--        <a href="../app/news" data-ignore="push" class="tab-item">-->
+<!--          <span class="glyphicon glyphicon-education"></span>-->
+<!--          <span class="tab-label">就业指导</span>-->
+<!--        </a>-->
         <a href="../app/user" data-ignore="push" class="tab-item">
           <span class="icon icon-person"></span>
           <span class="tab-label">My就业帮</span>
@@ -70,7 +78,7 @@
           <span class="icon icon-forward"></span>
           <span class="tab-label">联系我们 </span>
         </a>
-        <a href="#" class="tab-item"></a>
+        <a href="../app/about" data-ignore="push" class="tab-item"></a>
       </div>
     </div>
   </div>

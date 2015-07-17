@@ -50,12 +50,10 @@
         <tr>
           <th>标题</th>
           <th>内容</th>
-          <th>时间</th>
         </tr>
         <tr ng-repeat="info in infos|filter:query|orderBy:orderProp">
           <td ng-bind="info.guide_title"></td>
           <td ng-bind="info.guide_content"></td>
-          <td ng-bind="info.guide_createtime"></td>
         </tr>
       </table>
     </div>

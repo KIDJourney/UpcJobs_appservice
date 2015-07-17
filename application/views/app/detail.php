@@ -44,19 +44,19 @@
   <div id="content" ng-controller="tableCtrl" class="content container-fluid">
     <dl class="dl-horizontal">
       <dt>职位:</dt>
-      <dd <?php echo $data->job_name;?></dd>
+      <dd><?php echo $data->job_name;?></dd>
     </dl>
     <dl class="dl-horizontal">
       <dt>公司:</dt>
-      <dd <?php echo $data->job_company;?></dd>
+      <dd>Test<?php echo $data->job_company;?></dd>
     </dl>
     <dl class="dl-horizontal">
       <dt>薪水:</dt>
-      <dd <?php echo $data->job_salary;?></dd>
+      <dd><?php echo $data->job_salary;?></dd>
     </dl>
     <dl class="dl-horizontal">
       <dt>地址:</dt>
-      <dd <?php echo $data->job_position;?></dd>
+      <dd><?php echo $data->job_position;?></dd>
     </dl>
     <dl class="dl-horizontal">
       <dt>学历要求:</dt>
@@ -72,11 +72,11 @@
     </dl>
     <dl class="dl-horizontal">
       <dt>公司简介:</dt>
-      <dd <?php echo $data->job_companyinfo;?></dd>
+      <dd><?php echo $data->job_companyinfo;?></dd>
     </dl>
     <dl class="dl-horizontal">
       <dt>职位描述:</dt>
-      <dd <?php echo $data->job_description;?></dd>
+      <dd><?php echo $data->job_description;?></dd>
     </dl>
 
   </div>
