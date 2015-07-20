@@ -62,22 +62,22 @@
         </a>
       </div>
       <div class="bar-tab">
-        <a href="../app/more" data-ignore="push" class="tab-item">
+        <a href="../app/search" data-ignore="push" class="tab-item">
+          <span class="icon icon-search"></span>
+          <span class="tab-label">职位搜索</span>
+        </a>
+        <a href="../app/meeting" data-ignore="push" class="tab-item">
           <span class="icon icon-more"></span>
           <span class="tab-label">校园宣讲</span>
         </a>
         <a href="../app/user" data-ignore="push" class="tab-item">
           <span class="icon icon-person"></span>
           <span class="tab-label">My就业帮</span>
-        </a>        
+        </a>
         <a href="../app/info" data-ignore="push" class="tab-item">
           <span class="icon icon-info"></span>
-          <span class="tab-label">更多资讯</span>
+          <span class="tab-label">就业资讯</span>
         </a>
-        <a href="../app/search" data-ignore="push" class="tab-item">
-          <span class="icon icon-search"></span>
-          <span class="tab-label">职位搜索</span>
-        </a>      
       </div>
       <div style="border-top:0;" class="bar-tab bar-hide">
         <a href="../app/about" data-ignore="push" class="tab-item">

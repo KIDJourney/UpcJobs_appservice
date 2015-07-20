@@ -29,19 +29,19 @@
   <foot class="bar bar-tab">
       <a href="../app" title="home" data-ignore="push" class="tab-item">
           <span class="icon icon-home"></span>
-          <span class="tab-label">主页</span>
+          <span class="tab-label">回到主页</span>
       </a>
       <a href="../app/info" title="login" data-ignore="push" class="tab-item">
           <span class="icon icon-info"></span>
-          <span class="tab-label">资讯</span>
+          <span class="tab-label">就业资讯</span>
       </a>
       <a href="../app/more" data-ignore="push" class="tab-item">
           <span class="icon icon-more"></span>
-          <span class="tab-label">宣讲会</span>
+          <span class="tab-label">校园宣讲</span>
       </a>
       <a href="../app/search" data-ignore="push" class="tab-item">
           <span class="icon icon-search"></span>
-          <span class="tab-label">搜索</span>
+          <span class="tab-label">职位搜索</span>
       </a>
   </foot>
   <div class="content">
