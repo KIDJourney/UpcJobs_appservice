@@ -7,14 +7,14 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="stylesheet" href="http://cdn.bootcss.com/ratchet/2.0.2/css/ratchet.css">
   <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
-  <title>Register</title>
+  <title>注册</title>
 </head>
 
 <body>
   <header class="bar bar-nav">
-    <span id="back" title="back" class="icon icon-left-nav pull-left"></span>
-    <span title="refresh" class="icon icon-refresh pull-right"></span>
-    <h1 class="title">注册</h1>
+    <span id="back" title="back" class="icon icon-left-nav pull-left" style="color:#337ab7;"></span>
+    <span title="refresh" class="icon icon-refresh pull-right" style="color:#337ab7;"></span>
+    <h1 class="title"><strong>注册</strong></h1>
   </header>
   <div class="content">
     <form class="input-group">

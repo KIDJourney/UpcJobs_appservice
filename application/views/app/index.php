@@ -11,16 +11,16 @@
   <script src="http://cdn.staticfile.org/angular.js/1.2.5/angular.min.js"></script>
   <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <title>Index</title>
-  <style type="text/css">
-    .red {
-      color: rgb(255, 0, 0);
-    }
+  <style>
+      .bar-hide{
+        display: none;
+      }
   </style>
 </head>
 
 <body>
   <header class="bar bar-nav">
-    <span id="back" title="back" class="icon icon-left-nav pull-left"></span>
+    <span id="back" title="back" class="icon icon-left-nav pull-left text-primary"></span>
     <a href="../app/login">
       <?php if (isset($username)){?>
       <button title="../app/user" class="btn btn-link pull-right"><?php echo $username?></button>
@@ -28,7 +28,7 @@
       <button title="../app/login" class="btn btn-link pull-right">登录</button>
       <?php }?>
     </a>
-    <h1 class="title">首页</h1>
+    <h1 class="title"><strong>首页</strong></h1>
   </header>
   <div class="content">
     <div ng-app="myApp" ng-controller="newsController">
@@ -44,41 +44,49 @@
             <td ng-bind="new.company"></td>
             <td ng-bind="new.job_name"></td>
             <td ng-bind="new.salary"></td>
-            <td ng-bind="new.wanted_number"></td>
+            <td>
+              <a href="#" class="btn btn-link">详情</a>
+            </td>
           </tr>
         </tbody>
       </table>
       <p class="text-center">......</p>
     </div>
     <div id="footer" style="position:fixed;bottom:0;left:0;right:0;">
-      <div class="bar-tab">
-        <a href="../app/search" data-ignore="push" class="tab-item">
-          <span class="icon icon-search"></span>
-          <span class="tab-label">职位搜索</span>
+      <div class="bar-tab" style="height:30px;border:0;">
+        <a class="tab-item"></a>
+        <a class="tab-item"></a>
+        <a class="tab-item"></a>
+        <a id="toogle" class="tab-item" style="height:30px;">
+          <span class="icon icon-up-nav"></span>
         </a>
-        <a href="../app/meeting" databottom:0;-ignore="push" class="tab-item">
+      </div>
+      <div class="bar-tab">
+        <a href="../app/more" data-ignore="push" class="tab-item">
           <span class="icon icon-more"></span>
           <span class="tab-label">校园宣讲</span>
         </a>
+        <a href="../app/user" data-ignore="push" class="tab-item">
+          <span class="icon icon-person"></span>
+          <span class="tab-label">My就业帮</span>
+        </a>        
         <a href="../app/info" data-ignore="push" class="tab-item">
           <span class="icon icon-info"></span>
           <span class="tab-label">更多资讯</span>
         </a>
+        <a href="../app/search" data-ignore="push" class="tab-item">
+          <span class="icon icon-search"></span>
+          <span class="tab-label">职位搜索</span>
+        </a>      
       </div>
-      <div style="border-top:0;" class="bar-tab">
-<!--        <a href="../app/news" data-ignore="push" class="tab-item">-->
-<!--          <span class="glyphicon glyphicon-education"></span>-->
-<!--          <span class="tab-label">就业指导</span>-->
-<!--        </a>-->
-        <a href="../app/user" data-ignore="push" class="tab-item">
-          <span class="icon icon-person"></span>
-          <span class="tab-label">My就业帮</span>
-        </a>
+      <div style="border-top:0;" class="bar-tab bar-hide">
         <a href="../app/about" data-ignore="push" class="tab-item">
           <span class="icon icon-forward"></span>
           <span class="tab-label">联系我们 </span>
         </a>
-        <a href="../app/about" data-ignore="push" class="tab-item"></a>
+        <a href="" class="tab-item"></a>
+        <a href="" class="tab-item"></a>
+        <a href="" class="tab-item"></a>
       </div>
     </div>
   </div>
@@ -93,6 +101,19 @@
       $scope.news = data;
     });
   });
+  $("#toogle").click(function(){
+        var span=$(this).children("span");
+          if(span.hasClass("icon-up-nav")){
+              span.removeClass("icon-up-nav");
+              $(".bar-hide").fadeIn(0);
+              span.addClass("icon-down-nav");
+          }
+          else{
+            span.removeClass("icon-down-nav");
+            $(".bar-hide").fadeOut(0);
+            span.addClass("icon-up-nav");
+          }
+      });
 </script>
 
 </html>

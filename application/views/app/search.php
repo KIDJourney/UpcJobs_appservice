@@ -7,8 +7,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="stylesheet" href="http://cdn.bootcss.com/ratchet/2.0.2/css/ratchet.css">
   <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
   <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-  <title>Search</title>
+  <title>搜索</title>
   <style>
     .form-group {
       padding: 0;
@@ -18,26 +19,26 @@
 
 <body>
   <header class="bar bar-nav">
-    <span id="back" title="back" class="icon icon-left-nav pull-left"></span>
-    <span title="refresh" class="icon icon-refresh pull-right"></span>
-    <h1 class="title">职位查找</h1>
+    <span id="back" title="back" class="icon icon-left-nav pull-left text-primary"></span>
+    <span title="refresh" class="icon icon-refresh pull-right text-primary"></span>
+    <h1 class="title"><strong>职位查找</strong></h1>
   </header>
   <foot class="bar bar-tab">
     <a href="../app" title="home" data-ignore="push" class="tab-item">
       <span class="icon icon-home"></span>
-      <span class="tab-label">home</span>
+      <span class="tab-label">主页</span>
     </a>
     <a href="../app/user" title="login" data-ignore="push" class="tab-item">
       <span class="icon icon-person"></span>
-      <span class="tab-label">profile</span>
+      <span class="tab-label">个人</span>
+    </a>
+    <a href="../app/more" data-ignore="push" class="tab-item">
+      <span class="icon icon-more"></span>
+      <span class="tab-label">宣讲会</span>
     </a>
     <a href="../app/info" data-ignore="push" class="tab-item">
-      <span class="icon icon-more"></span>
-      <span class="tab-label">Info</span>
-    </a>
-    <a href="../app/search" data-ignore="push" class="tab-item">
-      <span class="icon icon-search"></span>
-      <span class="tab-label">search</span>
+      <span class="icon icon-info"></span>
+      <span class="tab-label">资讯</span>
     </a>
   </foot>
   <div class="content">
@@ -83,6 +84,27 @@
   $("#back").click(function() {
     history.go(-1);
   });
+  if($.cookie("url")){
+    get($.cookie("url"));
+  }
+  //ajax函数
+  function get(url){
+    $.get(url, function(data, status, xhr) {
+      var getContent;
+      if(!data.length){
+        getContent="<p class='text-center text-danger'>未搜索到相关结果</p>"
+      }
+      else{
+        getContent = "<table class='table'>";
+        getContent += "<tr><th>职位</th><th>地点</th><th>公司</th><th>工资</th><th>详细</th></tr>";
+        $.each(data, function(i, v) {
+          getContent += "<tr class='text-muted'><td>" + v.job_name + "</td><td>" + v.job_position + "</td><td>" + v.job_company + "</td><td>" + v.job_salary + "</td><td><a href='/detail' data-ignore='push'><button class='btn btn-link' id=" + i +">查看</button></a></td></tr>";
+        });
+        getContent += "</table>";
+      }
+      $("#content").html(getContent);
+    });    
+  }
   $("#get").click(function() {
     var key = document.getElementById("keyword").value;
     var selectType = $("#selectTypes").val();
@@ -109,16 +131,10 @@
         alert("Something goes wrong");
     }
     url += key;
-    $.get(url, function(data, status, xhr) {
-      var getContent = "<table class='table'>";
-      getContent += "<tr><th>职位</th><th>地点</th><th>公司</th><th>工资</th><th>操作</th></tr>";
-      $.each(data, function(i, v) {
-        getContent += "<tr><td>" + v.job_name + "</td><td>" + v.job_position + "</td><td>" + v.job_company + "</td><td>" + v.job_salary + "</td><td><a href='../app/detail/" + v.id + "' data-ignore='push'><button class='btn btn-default more' id=" + i +
-          ">更多</button></a></td></tr>";
-      });
-      getContent += "</table>";
-      $("#content").html(getContent);
-    });
+    get(url);
+    $.cookie("url",url,{expires:1/24/60});
+    $.cookie("keyword",$("#keyword").val(),{expires:1/24/60});
+    $.cookie("type",$("#selectTypes").val(),{expires:1/24/60});
     $("#searchForm").slideUp();
     $("#slideDown").slideDown();
     //- $("#down").show();

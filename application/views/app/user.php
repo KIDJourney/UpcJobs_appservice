@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="http://cdn.bootcss.com/ratchet/2.0.2/css/ratchet.css">
   <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
   <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-  <title>search</title>
+  <title>我的就业帮</title>
   <style>
     .form-group {
       padding: 0;
@@ -22,26 +22,26 @@
 
 <body>
   <header class="bar bar-nav">
-    <span id="back" title="back" class="icon icon-left-nav pull-left"></span>
-    <span title="refresh" class="icon icon-refresh pull-right"></span>
-    <h1 class="title">我的就业帮</h1>
+    <span id="back" title="back" class="icon icon-left-nav pull-left text-primary"></span>
+    <span title="refresh" class="icon icon-refresh pull-right text-primary"></span>
+    <h1 class="title"><strong>我的就业帮</strong></h1>
   </header>
   <foot class="bar bar-tab">
       <a href="../app" title="home" data-ignore="push" class="tab-item">
           <span class="icon icon-home"></span>
-          <span class="tab-label">home</span>
+          <span class="tab-label">主页</span>
       </a>
-      <a href="../app/user" title="login" data-ignore="push" class="tab-item">
-          <span class="icon icon-person"></span>
-          <span class="tab-label">profile</span>
+      <a href="../app/info" title="login" data-ignore="push" class="tab-item">
+          <span class="icon icon-info"></span>
+          <span class="tab-label">资讯</span>
       </a>
-      <a href="../app/info" data-ignore="push" class="tab-item">
+      <a href="../app/more" data-ignore="push" class="tab-item">
           <span class="icon icon-more"></span>
-          <span class="tab-label">Info</span>
+          <span class="tab-label">宣讲会</span>
       </a>
       <a href="../app/search" data-ignore="push" class="tab-item">
           <span class="icon icon-search"></span>
-          <span class="tab-label">search</span>
+          <span class="tab-label">搜索</span>
       </a>
   </foot>
   <div class="content">

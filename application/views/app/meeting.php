@@ -8,51 +8,56 @@
   <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
   <script src="http://cdn.staticfile.org/angular.js/1.2.5/angular.min.js"></script>
   <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-  <title>detail</title>
+  <title>校园宣讲会</title>
   <style></style>
 </head>
 
 <body>
   <header class="bar bar-nav">
-    <span id="back" title="back" class="icon icon-left-nav pull-left"></span>
-    <span title="refresh" class="icon icon-refresh pull-right"></span>
-    <h1 class="title">信息</h1>
+    <span id="back" title="back" class="icon icon-left-nav pull-left text-primary"></span>
+    <span title="refresh" class="icon icon-refresh pull-right text-primary"></span>
+    <h1 class="title"><strong>校园宣讲会</strong></h1>
   </header>
   <foot class="bar bar-tab">
     <a href="../app" title="home" data-ignore="push" class="tab-item">
       <span class="icon icon-home"></span>
-      <span class="tab-label">home</span>
+      <span class="tab-label">主页</span>
     </a>
-    <a href="../app/user" title="login" data-ignore="push" class="tab-item">
+    <a href="../app/login" title="login" data-ignore="push" class="tab-item">
       <span class="icon icon-person"></span>
-      <span class="tab-label">profile</span>
+      <span class="tab-label">个人</span>
     </a>
     <a href="../app/info" data-ignore="push" class="tab-item">
-      <span class="icon icon-more"></span>
-      <span class="tab-label">Info</span>
+      <span class="icon icon-info"></span>
+      <span class="tab-label">资讯</span>
     </a>
     <a href="../app/search" data-ignore="push" class="tab-item">
       <span class="icon icon-search"></span>
-      <span class="tab-label">search</span>
+      <span class="tab-label">搜索</span>
     </a>
   </foot>
   <div id="content" ng-controller="infoCtrl" class="content">
-    <div>
-      <table class="table">
-        <tr>
-          <th>标题</th>
-          <th>地点</th>
-          <th>内容</th>
-          <th>时间</th>
-        </tr>
-        <tr ng-repeat="meeting in meetings">
-          <td ng-bind="meeting.meeting_title"></td>
-          <td ng-bind="meeting.meeting_place"></td>
-          <td ng-bind="meeting.meeting_content"></td>
-          <td ng-bind="meeting.meeting_holdtime"></td>
-        </tr>
-      </table>
-    </div>
+      <div ng-repeat="meeting in meetings" style="border-bottom:1px solid #ddd;">
+        <dl class="dl-horizontal">
+          <dt>标题:</dt>
+          <dd ng-bind="meeting.meeting_title" class="text-info"></dd>
+        </dl>
+        <dl class="dl-horizontal">
+          <dt>地点:</dt>
+          <dd ng-bind="meeting.meeting_place" class="text-info"></dd>
+        </dl>
+        <dl class="dl-horizontal">
+          <dt>内容:</dt>
+          <dd ng-bind="meeting._meeting_content" class="text-info"></dd>
+        </dl>
+        <dl class="dl-horizontal">
+          <dt>时间:</dt>
+          <dd ng-bind="meeting.meeting_holdtime" class="text-info"></dd>
+        </dl>
+        <footer class="text-right text-muted">
+          <cite ng-bind="meeting.meeting_createtime"></cite>
+        </footer>
+      </div>
   </div>
   <script>
     var app = angular.module("myApp", []);

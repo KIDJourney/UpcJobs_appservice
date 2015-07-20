@@ -13,42 +13,42 @@
 
 <body>
   <header class="bar bar-nav">
-    <span id="back" class="icon icon-left-nav pull-left"></span>
-    <span class="icon icon-refresh pull-right"></span>
-    <h1 class="title">登录</h1>
+    <span id="back" class="icon icon-left-nav pull-left" style="color:#337ab7;"></span>
+    <span class="icon icon-refresh pull-right" style="color:#337ab7;"></span>
+    <h1 class="title"><strong>登录</strong></h1>
   </header>
-  <div class="bar bar-standard bar-footer-secondary" style="text-align:center;">
-	<a href="../app/register" class="btn btn-link">注册</a>
+  <div class="bar bar-standard bar-footer-secondary" style="text-align:center;border-top:0;">
+	 <a href="../app/register" class="btn btn-link">注册</a>
   </div>
   <foot class="bar bar-tab">
-    <a href="../app" title="home" data-ignore="push" class="tab-item">
+    <a href="../app" data-ignore="push" class="tab-item">
       <span class="icon icon-home"></span>
-      <span class="tab-label">home</span>
-    </a>
-    <a href="../app/user" title="login" data-ignore="push" class="tab-item">
-      <span class="icon icon-person"></span>
-      <span class="tab-label">profile</span>
+      <span class="tab-label">主页</span>
     </a>
     <a href="../app/info" data-ignore="push" class="tab-item">
+      <span class="icon icon-info"></span>
+      <span class="tab-label">资讯</span>
+    </a>
+    <a href="../app/more" data-ignore="push" class="tab-item">
       <span class="icon icon-more"></span>
-      <span class="tab-label">Info</span>
+      <span class="tab-label">宣讲会</span>
     </a>
     <a href="../app/search" data-ignore="push" class="tab-item">
       <span class="icon icon-search"></span>
-      <span class="tab-label">search</span>
+      <span class="tab-label">搜索</span>
     </a>
   </foot>
   <div class="content">
     <form class="input-group" method="post" action="<?php echo current_url();?>" >
       <div class="input-row">
-        <label for="name">username:</label>
+        <label for="name">用户名</label>
         <input id="name" type="text" name="username" placeholder="your name" />
       </div>
       <div class="input-row">
-        <label for="password">password:</label>
+        <label for="password">密码</label>
         <input id="password" type="password" name="password" placeholder="your password" />
       </div>
-      <button class="btn btn-primary btn-block" style="width:96%;;margin:5px auto;">login</button>
+      <button class="btn btn-primary btn-block" style="width:96%;;margin:5px auto;">登录</button>
     </form>
   </div>
   <script>
