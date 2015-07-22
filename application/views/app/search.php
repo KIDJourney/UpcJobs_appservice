@@ -18,29 +18,35 @@
 </head>
 
 <body>
-  <header class="bar bar-nav">
-    <span id="back" title="back" class="icon icon-left-nav pull-left text-primary"></span>
-    <span title="refresh" class="icon icon-refresh pull-right text-primary"></span>
-    <h1 class="title"><strong>职位查找</strong></h1>
-  </header>
-  <foot class="bar bar-tab">
-    <a href="../app" title="home" data-ignore="push" class="tab-item">
-      <span class="icon icon-home"></span>
-      <span class="tab-label">回到主页</span>
-    </a>
-    <a href="../app/user" title="login" data-ignore="push" class="tab-item">
-      <span class="icon icon-person"></span>
-      <span class="tab-label">个人主页</span>
-    </a>
-    <a href="../app/more" data-ignore="push" class="tab-item">
-      <span class="icon icon-more"></span>
-      <span class="tab-label">校园宣讲</span>
-    </a>
-    <a href="../app/info" data-ignore="push" class="tab-item">
-      <span class="icon icon-info"></span>
-      <span class="tab-label">就业资讯</span>
-    </a>
-  </foot>
+<header class="bar bar-nav">
+  <span id="back" title="back" class="icon icon-left-nav pull-left text-primary"></span>
+  <a href="../app/login">
+    <?php if (isset($username)){?>
+      <button title="../app/user" class="btn btn-link pull-right"><?php echo $username?></button>
+    <?php } else { ?>
+      <button title="../app/login" class="btn btn-link pull-right">登录</button>
+    <?php }?>
+  </a>
+  <h1 class="title"><strong><?php echo $title?></strong></h1>
+</header>
+<footer class="bar bar-tab">
+  <a href="../app" data-ignore="push" class="tab-item">
+    <span class="icon icon-home"></span>
+    <span class="tab-label">主页</span>
+  </a>
+  <a href="../app/search" data-ignore="push" class="tab-item">
+    <span class="icon icon-search"></span>
+    <span class="tab-label">职位搜索</span>
+  </a>
+  <a href="../app/meeting" data-ignore="push" class="tab-item">
+    <span class="icon icon-more"></span>
+    <span class="tab-label">校园宣讲</span>
+  </a>
+  <a href="../app/info" data-ignore="push" class="tab-item">
+    <span class="icon icon-info"></span>
+    <span class="tab-label">就业资讯</span>
+  </a>
+</footer>
   <div class="content">
     <div id="searchForm" class="form-horizontal container-fluid">
       <div style="margin-top:5px;" class="form-group">
@@ -98,7 +104,7 @@
         getContent = "<table class='table'>";
         getContent += "<tr><th>职位</th><th>地点</th><th>公司</th><th>工资</th><th>详细</th></tr>";
         $.each(data, function(i, v) {
-          getContent += "<tr class='text-muted'><td>" + v.job_name + "</td><td>" + v.job_position + "</td><td>" + v.job_company + "</td><td>" + v.job_salary + "</td><td><a href='/detail' data-ignore='push'><button class='btn btn-link' id=" + i +">查看</button></a></td></tr>";
+          getContent += "<tr class='text-muted'><td>" + v.job_name + "</td><td>" + v.job_position + "</td><td>" + v.job_company + "</td><td>" + v.job_salary + "</td><td><a href='../app/detail/" + v.id + "' data-ignore='push'><button class='btn btn-link' id=" + i +">查看</button></a></td></tr>";
         });
         getContent += "</table>";
       }
@@ -109,9 +115,9 @@
     var key = document.getElementById("keyword").value;
     var selectType = $("#selectTypes").val();
     var urls = new Array();
-    urls[0] = "http://2.upcexample.sinaapp.com/api/job/pos/";
-    urls[1] = "http://2.upcexample.sinaapp.com/api/job/major/";
-    urls[2] = "http://2.upcexample.sinaapp.com/api/job/name/";
+    urls[0] = "http://upcexample.sinaapp.com/api/job/pos/";
+    urls[1] = "http://upcexample.sinaapp.com/api/job/major/";
+    urls[2] = "http://upcexample.sinaapp.com/api/job/name/";
     urls[3] = "http://upcexample.sinaapp.com/api.php?type=job&keyword=jobid&content";
     var url;
     switch (selectType) {

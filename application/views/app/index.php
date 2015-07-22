@@ -10,7 +10,7 @@
   <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
   <script src="http://cdn.staticfile.org/angular.js/1.2.5/angular.min.js"></script>
   <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <title>Index</title>
+  <title><?php echo $title;?></title>
   <style>
       .bar-hide{
         display: none;
@@ -19,17 +19,17 @@
 </head>
 
 <body>
-  <header class="bar bar-nav">
-    <span id="back" title="back" class="icon icon-left-nav pull-left text-primary"></span>
-    <a href="../app/login">
-      <?php if (isset($username)){?>
-      <button title="../app/user" class="btn btn-link pull-right"><?php echo $username?></button>
-      <?php } else { ?>
+<header class="bar bar-nav">
+  <span id="back" title="back" class="icon icon-left-nav pull-left text-primary"></span>
+  <a href="../app/login">
+    <?php if (isset($username)){?>
+      <button title="../app/user" class="btn btn-link pull-right"><?php echo $username;?></button>
+    <?php } else { ?>
       <button title="../app/login" class="btn btn-link pull-right">登录</button>
-      <?php }?>
-    </a>
-    <h1 class="title"><strong>首页</strong></h1>
-  </header>
+    <?php }?>
+  </a>
+  <h1 class="title"><strong><?php echo $title;?></strong></h1>
+</header>
   <div class="content">
     <div ng-app="myApp" ng-controller="newsController">
       <table class="table">
@@ -61,7 +61,12 @@
           <span class="icon icon-up-nav"></span>
         </a>
       </div>
-      <div class="bar-tab">
+
+      <footer class="bar bar-tab">
+        <a href="../app" data-ignore="push" class="tab-item">
+          <span class="icon icon-home"></span>
+          <span class="tab-label">主页</span>
+        </a>
         <a href="../app/search" data-ignore="push" class="tab-item">
           <span class="icon icon-search"></span>
           <span class="tab-label">职位搜索</span>
@@ -70,15 +75,11 @@
           <span class="icon icon-more"></span>
           <span class="tab-label">校园宣讲</span>
         </a>
-        <a href="../app/user" data-ignore="push" class="tab-item">
-          <span class="icon icon-person"></span>
-          <span class="tab-label">My就业帮</span>
-        </a>
         <a href="../app/info" data-ignore="push" class="tab-item">
           <span class="icon icon-info"></span>
           <span class="tab-label">就业资讯</span>
         </a>
-      </div>
+      </footer>
       <div style="border-top:0;" class="bar-tab bar-hide">
         <a href="../app/about" data-ignore="push" class="tab-item">
           <span class="icon icon-forward"></span>
