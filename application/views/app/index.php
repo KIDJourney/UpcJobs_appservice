@@ -61,7 +61,7 @@
           <span class="icon icon-up-nav"></span>
         </a>
       </div>
-      <footer class="bar-tab">
+      <footer class="bar bar-tab">
         <a href="../app" data-ignore="push" class="tab-item">
           <span class="icon icon-home"></span>
           <span class="tab-label">主页</span>

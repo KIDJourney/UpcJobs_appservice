@@ -51,8 +51,8 @@
         </div>
       </div>
     </div>
-    <div class="container-fluid">
-      <div ng-repeat="info in infos|filter:query|orderBy:orderProp" style="border-top: 1px solid #ddd;">
+    <div>
+      <div ng-repeat="info in infos|filter:query|orderBy:orderProp" style="border-top: 1px solid #ddd;padding-left:5px;padding-right:5px;">
         <dl class="dl-horizontal">
           <dd>标题</dd>
           <dt class="text-warning" ng-bind="info.guide_title"></dt>

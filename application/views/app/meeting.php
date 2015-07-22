@@ -43,7 +43,7 @@
   </a>
 </footer>
   <div id="content" ng-controller="infoCtrl" class="content">
-      <div ng-repeat="meeting in meetings" style="border-bottom:1px solid #ddd;">
+      <div ng-repeat="meeting in meetings" style="border-bottom:1px solid #ddd;padding-left:5px;padding-right:5px;">
         <dl class="dl-horizontal">
           <dt>标题:</dt>
           <dd ng-bind="meeting.meeting_title" class="text-info"></dd>
