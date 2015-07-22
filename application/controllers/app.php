@@ -25,14 +25,14 @@ class App extends CI_Controller{
         $this->form_validation->set_rules('password','Password','required');
 
         if ($this->form_validation->run() === FALSE){
-            $this->load->view('app/login');
+            $this->load->view('app/login',array('title'=>"登录"));
         } else {
             if ($this->auth_lib->login($this->input->post('username'),$this->input->post('password'))) {
                 redirect("app/user");
             }
             else {
                 $error = "Woops , there are something wrong with your input";
-                $this->load->view('app/login');
+                $this->load->view('app/login',array('title'=>"登录"));
             }
         }
     }
@@ -43,38 +43,38 @@ class App extends CI_Controller{
         if (!$data)
             show_404();
 //        print_r($data);
-        $this->load->view('app/detail',array('data'=>$data[0]));
+        $this->load->view('app/detail',array('data'=>$data[0],'title'=>"详细信息"));
     }
 
     function index()
     {
 
         if ($this->auth_lib->check_login()){
-            $this->load->view('app/index',array('username'=>$this->auth_lib->get_username()));
+            $this->load->view('app/index',array('username'=>$this->auth_lib->get_username(),'title'=>"首页"));
         }
-        $this->load->view("app/index");
+        $this->load->view("app/index",array('title'=>"首页"));
     }
 
     function search()
     {
-        $this->load->view("app/search");
+        $this->load->view("app/search",array('title'=>"职位搜索"));
     }
 
     function meeting()
     {
-        $this->load->view('app/meeting');
+        $this->load->view('app/meeting',array('title'=>"校园宣讲"));
     }
 
     function info()
     {
-        $this->load->view('app/info');
+        $this->load->view('app/info',array('title'=>"就业信息"));
     }
 
     function user()
     {
 
         if ($this->auth_lib->check_login()) {
-            $this->load->view('app/user');
+            $this->load->view('app/user',array('title'=>"我的首页"));
         } else{
             redirect('app/login');
         }
@@ -83,17 +83,17 @@ class App extends CI_Controller{
 
     function register()
     {
-        $this->load->view('app/register');
+        $this->load->view('app/register',array('title'=>"注册"));
     }
 
     function about()
     {
-        $this->load->view('app/about');
+        $this->load->view('app/about',array('title'=>"关于我们"));
     }
 
     function more()
     {
-        $this->load->view('app/about');
+        $this->load->view('app/about',array('title'=>'更多内容'));
     }
 
     function debug()
