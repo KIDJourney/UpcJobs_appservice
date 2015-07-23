@@ -11,7 +11,6 @@
   <title>就业资讯</title>
   <style></style>
 </head>
-
 <body>
 <header class="bar bar-nav">
   <span id="back" title="back" class="icon icon-left-nav pull-left text-primary"></span>

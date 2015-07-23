@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-
+<html ng-app="myApp">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
@@ -30,8 +28,26 @@
   </a>
   <h1 class="title"><strong><?php echo $title;?></strong></h1>
 </header>
+<footer class="bar bar-tab">
+  <a href="../app" data-ignore="push" class="tab-item">
+    <span class="icon icon-home"></span>
+    <span class="tab-label">主页</span>
+  </a>
+  <a href="../app/search" data-ignore="push" class="tab-item">
+    <span class="icon icon-search"></span>
+    <span class="tab-label">职位搜索</span>
+  </a>
+  <a href="../app/meeting" data-ignore="push" class="tab-item">
+    <span class="icon icon-more"></span>
+    <span class="tab-label">校园宣讲</span>
+  </a>
+  <a href="../app/info" data-ignore="push" class="tab-item">
+    <span class="icon icon-info"></span>
+    <span class="tab-label">就业资讯</span>
+  </a>
+</footer>
   <div class="content">
-    <div ng-app="myApp" ng-controller="newsController">
+    <div ng-controller="newsController">
       <table class="table">
         <caption>
           <strong style="margin-left:5px;" class="text-info">最新消息</strong>
@@ -52,7 +68,7 @@
       </table>
       <p class="text-center">......</p>
     </div>
-    <div id="footer" style="position:fixed;bottom:0;left:0;right:0;">
+    <!-- <div id="footer" style="position:fixed;bottom:0;left:0;right:0;">
       <div class="bar-tab" style="height:30px;border:0;">
         <a class="tab-item"></a>
         <a class="tab-item"></a>
@@ -88,9 +104,8 @@
         <a href="" class="tab-item"></a>
         <a href="" class="tab-item"></a>
       </div>
-    </div>
+    </div> -->
   </div>
-</body>
 <script type="text/javascript">
   $("#back").click(function() {
     history.go(-1);
@@ -115,4 +130,5 @@
           }
       });
 </script>
+</body>
 </html>

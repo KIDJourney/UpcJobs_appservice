@@ -1,5 +1,4 @@
 <html ng-app="myApp">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
@@ -10,11 +9,7 @@
   <script src="http://cdn.staticfile.org/angular.js/1.2.5/angular.min.js"></script>
   <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" />
   <title>detail</title>
-  <style>
-    .span {
-      text-align: center;
-    }
-  </style>
+  <style></style>
 </head>
 
 <body>
