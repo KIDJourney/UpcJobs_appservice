@@ -35,10 +35,8 @@ class Auth_lib {
         $load_model = $this->load_model;
         $real_passwd = $this->ci->$load_model->get_passwd($username);
         if ($real_passwd && $real_passwd == $passwd ){
-            if ($this->set_session($username))
-                return true;
-            else
-                return false;
+            $this->set_session($username);
+            return true;
         } else {
             return false;
         }

@@ -38,9 +38,9 @@ class Manage extends CI_Controller {
         } else {
             if ($this->auth_lib->login($this->input->post('username'),$this->input->post('passwd'))) {
                 redirect("manageview");
-                return;
             }
             else {
+                echo "Login failed";
                 $data['login_failed'] = true;
                 $this->load->view('common/head',$data);
                 $this->load->view('manage/login',$data);
